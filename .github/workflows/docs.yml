@@ -41,7 +41,7 @@ jobs:
                  "and add it as a repo secret. See README.md for setup steps."
             exit 1
           fi
-          git clone --depth=1 --branch=main \
+          git clone --depth=1 --branch=dev \
             "https://x-access-token:${GH_TOKEN}@github.com/flyokai/flyokai.git" \
             /tmp/flyokai-source
           echo "Source SHA: $(git -C /tmp/flyokai-source rev-parse --short HEAD)"

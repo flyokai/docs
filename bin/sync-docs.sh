@@ -53,10 +53,14 @@ rewrite_links() {
 # Home page sourced from the framework's README.md.
 # Its links like (docs/cli.md) need to become (cli.md) because the docs
 # tree is flattened on this site — there is no `docs/` subdir.
-strip_agent_nav "$SRC/README.md" \
-    | sed -E 's@\(docs/([a-z][a-z0-9_-]*\.md)\)@(\1)@g' \
-    | rewrite_links \
-    > "$DEST/index.md"
+# Inject frontmatter so the "Edit this page" link points at the
+# upstream README.md, not the non-existent docs/index.md.
+{
+    printf -- '---\nedit_url: https://github.com/flyokai/flyokai/blob/dev/README.md\n---\n\n'
+    strip_agent_nav "$SRC/README.md" \
+        | sed -E 's@\(docs/([a-z][a-z0-9_-]*\.md)\)@(\1)@g' \
+        | rewrite_links
+} > "$DEST/index.md"
 
 # All framework docs/*.md — already use sibling-relative links, no rewrite needed,
 # except for cross-package links which we rewrite the same way.

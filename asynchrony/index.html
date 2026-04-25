@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.flyokai.com/architecture/">
+        <link rel="canonical" href="https://docs.flyokai.com/asynchrony/">
       
       
-        <link rel="prev" href="../getting-started/">
+        <link rel="prev" href="../architecture/">
       
       
-        <link rel="next" href="../asynchrony/">
+        <link rel="next" href="../dependency-injection/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Architecture - Flyokai</title>
+        <title>Asynchrony - Flyokai</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#architecture" class="md-skip">
+        <a href="#asynchrony-never-block-the-event-loop" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture
+              Asynchrony
             
           </span>
         </div>
@@ -271,11 +271,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../architecture/" class="md-tabs__link">
         
   
   
@@ -292,9 +290,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../asynchrony/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -600,6 +600,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -619,7 +646,7 @@
   <span class="md-ellipsis">
     
   
-    Architecture
+    Asynchrony
   
 
     
@@ -637,7 +664,7 @@
   <span class="md-ellipsis">
     
   
-    Architecture
+    Asynchrony
   
 
     
@@ -663,10 +690,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#application-types" class="md-nav__link">
+  <a href="#the-two-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Application types
+        The two rules
       
     </span>
   </a>
@@ -674,10 +701,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bootstrap-lifecycle" class="md-nav__link">
+  <a href="#the-conversion-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bootstrap lifecycle
+        The conversion table
       
     </span>
   </a>
@@ -685,10 +712,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#http-flow" class="md-nav__link">
+  <a href="#concurrency-idioms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HTTP flow
+        Concurrency idioms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency idioms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-two-operations-in-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run two operations in parallel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-backpressure-with-a-semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply backpressure with a semaphore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-out-an-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time out an operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-process-a-large-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stream-process a large dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suspension-api-low-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suspension API (low level)
       
     </span>
   </a>
@@ -696,10 +784,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-service-flow" class="md-nav__link">
+  <a href="#things-that-look-async-but-arent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data-service flow
+        Things that look async but aren't
       
     </span>
   </a>
@@ -707,10 +795,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-layer" class="md-nav__link">
+  <a href="#checking-your-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database layer
+        Checking your code
       
     </span>
   </a>
@@ -718,10 +806,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-pipeline" class="md-nav__link">
+  <a href="#fiber-vs-main" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data pipeline
+        Fiber vs {main}
       
     </span>
   </a>
@@ -729,10 +817,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#di-architecture-one-screen-view" class="md-nav__link">
+  <a href="#error-handling-inside-a-fiber" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DI architecture (one-screen view)
+        Error handling inside a fiber
       
     </span>
   </a>
@@ -740,21 +828,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-architecture" class="md-nav__link">
+  <a href="#diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schema architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search-criteria-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Search-criteria architecture
+        Diagnostics
       
     </span>
   </a>
@@ -765,33 +842,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../asynchrony/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Asynchrony
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1093,10 +1143,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#application-types" class="md-nav__link">
+  <a href="#the-two-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Application types
+        The two rules
       
     </span>
   </a>
@@ -1104,10 +1154,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bootstrap-lifecycle" class="md-nav__link">
+  <a href="#the-conversion-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bootstrap lifecycle
+        The conversion table
       
     </span>
   </a>
@@ -1115,10 +1165,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#http-flow" class="md-nav__link">
+  <a href="#concurrency-idioms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HTTP flow
+        Concurrency idioms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency idioms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-two-operations-in-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run two operations in parallel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-backpressure-with-a-semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apply backpressure with a semaphore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-out-an-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time out an operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-process-a-large-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stream-process a large dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suspension-api-low-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suspension API (low level)
       
     </span>
   </a>
@@ -1126,10 +1237,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-service-flow" class="md-nav__link">
+  <a href="#things-that-look-async-but-arent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data-service flow
+        Things that look async but aren't
       
     </span>
   </a>
@@ -1137,10 +1248,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-layer" class="md-nav__link">
+  <a href="#checking-your-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database layer
+        Checking your code
       
     </span>
   </a>
@@ -1148,10 +1259,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-pipeline" class="md-nav__link">
+  <a href="#fiber-vs-main" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data pipeline
+        Fiber vs {main}
       
     </span>
   </a>
@@ -1159,10 +1270,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#di-architecture-one-screen-view" class="md-nav__link">
+  <a href="#error-handling-inside-a-fiber" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DI architecture (one-screen view)
+        Error handling inside a fiber
       
     </span>
   </a>
@@ -1170,21 +1281,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-architecture" class="md-nav__link">
+  <a href="#diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schema architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search-criteria-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Search-criteria architecture
+        Diagnostics
       
     </span>
   </a>
@@ -1208,7 +1308,7 @@
 
 
   
-    <a href="https://github.com/flyokai/flyokai/blob/dev/docs/architecture.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/flyokai/flyokai/blob/dev/docs/asynchrony.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1216,173 +1316,145 @@
   
 
 
-<h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h1>
-<p>The master diagrams of the Flyokai framework, in one place.</p>
-<h2 id="application-types">Application types<a class="headerlink" href="#application-types" title="Permanent link">&para;</a></h2>
+<h1 id="asynchrony-never-block-the-event-loop">Asynchrony — never block the event loop<a class="headerlink" href="#asynchrony-never-block-the-event-loop" title="Permanent link">&para;</a></h1>
+<p>Flyokai is cooperative. Every HTTP handler, CLI command, request handler, and DI lifecycle hook runs inside a fiber managed by Revolt's event loop. Block one fiber and you stall everything.</p>
+<h2 id="the-two-rules">The two rules<a class="headerlink" href="#the-two-rules" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Never use a blocking system call.</strong> No <code>sleep()</code>, <code>usleep()</code>, <code>file_get_contents()</code> for remote URLs, <code>mysqli_query()</code> without <code>MYSQLI_ASYNC</code>, <code>curl_exec()</code> without curl-multi, <code>socket_*</code> without non-blocking flags.</li>
+<li><strong>Use Amp / Revolt primitives instead.</strong> They suspend the current fiber, let the loop run other work, and resume when the I/O is ready.</li>
+</ol>
+<h2 id="the-conversion-table">The conversion table<a class="headerlink" href="#the-conversion-table" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Purpose</th>
-<th>Bootstraps loaded</th>
+<th>Blocking</th>
+<th>Async equivalent</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Setup</code></td>
-<td>First-install / upgrade</td>
-<td>Base + Setup</td>
+<td><code>sleep(N)</code></td>
+<td><code>Amp\delay(N)</code></td>
 </tr>
 <tr>
-<td><code>Cli</code></td>
-<td>Console commands</td>
-<td>Base + Cli</td>
+<td><code>usleep(N)</code></td>
+<td><code>Amp\delay(N / 1_000_000)</code></td>
 </tr>
 <tr>
-<td><code>Web</code></td>
-<td>Plain HTTP server</td>
-<td>Base + Web</td>
+<td><code>file_get_contents('https://…')</code></td>
+<td><code>(new Amp\Http\Client\HttpClientBuilder())-&gt;build()-&gt;request(new Request('https://…'))-&gt;getBody()-&gt;buffer()</code></td>
 </tr>
 <tr>
-<td><code>Worker</code></td>
-<td>Worker process — extends Web with cluster IPC</td>
-<td>Base + Web + Worker</td>
+<td><code>file_get_contents('/path')</code></td>
+<td><code>Amp\File\read('/path')</code></td>
 </tr>
 <tr>
-<td><code>Cluster</code></td>
-<td>Coordinator</td>
-<td>Base + Cluster</td>
+<td><code>file_put_contents('/path', $data)</code></td>
+<td><code>Amp\File\write('/path', $data)</code></td>
 </tr>
 <tr>
-<td><code>Task</code></td>
-<td>One-off background tasks</td>
-<td>Base + Task</td>
+<td><code>flock($handle, LOCK_EX)</code></td>
+<td><code>Flyokai\AmpMate\ampFlock($handle, LOCK_EX)</code> (cooperative retry)</td>
+</tr>
+<tr>
+<td><code>mysqli_query($link, $sql)</code></td>
+<td>the framework <code>Adapter</code> — uses <code>MYSQLI_ASYNC</code> + <code>EventLoop::onMysqli()</code> under the hood</td>
+</tr>
+<tr>
+<td><code>PDO::query()</code></td>
+<td>the framework <code>Adapter</code> — uses worker pools under the hood (<code>AsyncPdoConnectionPool</code>)</td>
+</tr>
+<tr>
+<td><code>curl_exec()</code></td>
+<td><code>(new HttpClientBuilder())-&gt;build()-&gt;request(...)</code></td>
+</tr>
+<tr>
+<td><code>socket_read()</code> / <code>socket_write()</code></td>
+<td><code>EventLoop::onReadable($fd, …)</code> / <code>EventLoop::onWritable($fd, …)</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="bootstrap-lifecycle">Bootstrap lifecycle<a class="headerlink" href="#bootstrap-lifecycle" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Module composer.json autoload calls Registry::addModule()
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ▼
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>RootBootstrap(ApplicationType)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   │
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ├── Init phase    — every module&#39;s init() registers DI config files
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   ├── Build phase   — Amp Injector Application built from merged definitions
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   └── Bootstrap     — every module&#39;s bootstrap() runs against the live container
+<h2 id="concurrency-idioms">Concurrency idioms<a class="headerlink" href="#concurrency-idioms" title="Permanent link">&para;</a></h2>
+<h3 id="run-two-operations-in-parallel">Run two operations in parallel<a class="headerlink" href="#run-two-operations-in-parallel" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">use function Amp\async;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">use function Amp\Future\await;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">[$a, $b] = await([</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">    async(fn() =&gt; $repoA-&gt;load($id)),</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">    async(fn() =&gt; $repoB-&gt;load($id)),</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="x">]);</span>
 </span></code></pre></div>
-<p>DI config files run during init; <strong>the container does not yet exist</strong>. Use only <code>RootBootstrap</code> methods at that point.</p>
-<h2 id="http-flow">HTTP flow<a class="headerlink" href="#http-flow" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>AMPHP SocketHttpServer
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   ▼
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Router (method + URI match via fast-route)
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   ▼
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>HandlerGuard (Authorization::isAllowed for ProtectedHandlers, skipped for GuestHandlers)
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   ▼
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>RequestHandler::handleRequest()
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>   ▼
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Response (typically JSON)
+<h3 id="apply-backpressure-with-a-semaphore">Apply backpressure with a semaphore<a class="headerlink" href="#apply-backpressure-with-a-semaphore" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">use Amp\Sync\LocalSemaphore;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">$sem = new LocalSemaphore(8);   // max 8 concurrent</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">foreach ($urls as $url) {</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">    $lock = $sem-&gt;acquire();</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="x">    async(function () use ($url, $lock) {</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="x">        try { processUrl($url); }</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="x">        finally { $lock-&gt;release(); }</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="x">    });</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="x">}</span>
 </span></code></pre></div>
+<h3 id="time-out-an-operation">Time out an operation<a class="headerlink" href="#time-out-an-operation" title="Permanent link">&para;</a></h3>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">use Amp\TimeoutCancellation;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">$response = $client-&gt;request($req, new TimeoutCancellation(5));</span>
+</span></code></pre></div>
+<h3 id="stream-process-a-large-dataset">Stream-process a large dataset<a class="headerlink" href="#stream-process-a-large-dataset" title="Permanent link">&para;</a></h3>
+<p>Use <code>flyokai/amp-data-pipeline</code>:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">use Flyokai\AmpDataPipeline\{ArraySource, ProcessorComposition};</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">$pipeline = new ProcessorComposition([</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">    new LoadProcessor(),</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    new TransformProcessor(),</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">    new SaveProcessor(),</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">]);</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">$pipeline-&gt;setSource(new ArraySource($input));</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">$pipeline-&gt;run();</span>
+</span></code></pre></div>
+<p>Each processor independently controls its fiber count (<code>setConcurrency</code>) and output buffer (<code>setBufferSize</code>).</p>
+<h2 id="suspension-api-low-level">Suspension API (low level)<a class="headerlink" href="#suspension-api-low-level" title="Permanent link">&para;</a></h2>
+<p>When you need to integrate with a callback-based API:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">use Revolt\EventLoop;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">$suspension = EventLoop::getSuspension();</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="x">someAsyncApi(onComplete: fn ($result) =&gt; $suspension-&gt;resume($result),</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">              onError:    fn ($e)      =&gt; $suspension-&gt;throw($e));</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="x">$result = $suspension-&gt;suspend();   // current fiber pauses; loop runs other work</span>
+</span></code></pre></div>
+<p>The <code>MYSQLI_ASYNC</code> integration in <code>flyokai/laminas-db-driver-async</code> is built on this primitive (<code>EventLoop::onMysqli()</code> + suspension).</p>
+<h2 id="things-that-look-async-but-arent">Things that look async but aren't<a class="headerlink" href="#things-that-look-async-but-arent" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>flyokai/application</code> provides the server lifecycle and the router builder.</li>
-<li><code>flyokai/oauth-server</code> provides <code>HandlerGuard\Authorization</code> for Bearer-token validation.</li>
+<li><strong><code>sleep()</code> inside a <code>Closure</code> passed to <code>EventLoop::defer()</code></strong> — the closure still runs blockingly when its tick comes; it just runs <em>later</em>. The loop is still stuck while it sleeps.</li>
+<li><strong><code>file_get_contents()</code> against a slow disk</strong> — magnetic disks under contention can stall fibers for seconds. On hot paths, prefer <code>Amp\File</code>.</li>
+<li><strong>Tight loops without yielding</strong> — even if you call <code>Amp\delay(0)</code> periodically, busy CPU work blocks the loop. Move heavy CPU work to <code>Amp\Parallel\Worker</code>.</li>
 </ul>
-<h2 id="data-service-flow">Data-service flow<a class="headerlink" href="#data-service-flow" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Client
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   ▼
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Socket connect → SocketDataServer accepts → ClientHandlerImpl created
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>   ▼
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>First message MUST be AccessToken — OAuth handshake
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>   ▼
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>StreamChannel + Dispatcher initialised
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>   ▼
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Dispatcher loop: receive → Router → Middleware → Handler → Response
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>   ▼
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>Loop until client disconnects or TimeoutQueue fires
+<h2 id="checking-your-code">Checking your code<a class="headerlink" href="#checking-your-code" title="Permanent link">&para;</a></h2>
+<p>To find blocking calls, grep for the usual suspects:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>grep<span class="w"> </span>-rn<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;\b(sleep|usleep|fread|fgets|file_get_contents|file_put_contents|fopen|fclose|curl_exec|socket_(read|write))\b&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.php&#39;</span><span class="w"> </span>src/
 </span></code></pre></div>
+<p>Whitelist legitimate cases (CLI bootstrap before the loop runs, etc.).</p>
+<h2 id="fiber-vs-main">Fiber vs <code>{main}</code><a class="headerlink" href="#fiber-vs-main" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>flyokai/data-service</code> provides the socket server, router, and middleware.</li>
-<li><code>flyokai/data-service-message</code> provides the built-in request/response DTOs.</li>
-<li><code>flyokai/amp-channel-dispatcher</code> provides the underlying request/response dispatcher.</li>
+<li><code>EventLoop::run()</code> is callable <strong>only from <code>{main}</code></strong> — the top-level script that started the loop.</li>
+<li>From inside a fiber (any handler / callback), use the <code>Suspension</code> API instead. Calling <code>EventLoop::run()</code> from a fiber re-enters the loop and corrupts state.</li>
 </ul>
-<h2 id="database-layer">Database layer<a class="headerlink" href="#database-layer" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Application Config
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   ▼
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ConnectionPool (interface) — Amp / AsyncPdo / AsyncMysqli / TwoLevel
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>   ▼
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Laminas\Db\Adapter\Adapter
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   ▼
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Async Driver (suspends fibers, never blocks the loop)
-</span></code></pre></div>
-<p>The default in Flyokai is <code>AsyncMysqliConnectionPool</code>. Switch via the <code>ConnectionPool</code> alias in your project's <code>diconfig.php</code>.</p>
-<h2 id="data-pipeline">Data pipeline<a class="headerlink" href="#data-pipeline" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>DataSource (Array / Iterator / Queue)
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>   ▼
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Processor (concurrency + bufferSize)
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>   ▼  ProcessorComposition chains stages
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Processor
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>   ▼  Optionally BatchProcessor groups
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>   ▼  Optionally MultiCastProcessor fans out
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Bulk DB ops (InsertOnDuplicate, ID resolvers)
-</span></code></pre></div>
+<h2 id="error-handling-inside-a-fiber">Error handling inside a fiber<a class="headerlink" href="#error-handling-inside-a-fiber" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>flyokai/amp-data-pipeline</code> provides the primitives.</li>
-<li><code>flyokai/laminas-db-bulk-update</code> provides the bulk DB writes.</li>
-<li><code>flyokai/indexer</code> uses pipelines for full reindex.</li>
+<li><code>try / catch</code> works as you expect — exceptions propagate up the fiber's call stack.</li>
+<li>Unhandled exceptions in deferred callbacks go to <code>EventLoop::setErrorHandler()</code>. If that handler throws, the loop stops immediately.</li>
+<li><code>Amp\Future::await()</code> re-throws the future's error in the calling fiber.</li>
 </ul>
-<h2 id="di-architecture-one-screen-view">DI architecture (one-screen view)<a class="headerlink" href="#di-architecture-one-screen-view" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>diconfig.php files (one per module per app type)
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   ▼  merged via DiConfig::merge()
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Definitions ⨯ Arguments
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   ▼
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Injector (root Weaver = any(automaticTypes, runtimeTypes))
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>   ▼
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Application (immutable; holds Container + Injector)
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   ▼
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>container-&gt;get(id)
-</span></code></pre></div>
+<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>flyokai/amphp-injector</code> is the engine.</li>
-<li><code>flyokai/application</code> produces the diconfig stack.</li>
-<li><code>flyokai/composition</code> orders modules + DB setup steps.</li>
-<li>See <a href="../dependency-injection/"><code>dependency-injection.md</code></a> for the detailed file format.</li>
+<li><strong>Profiler</strong>: <code>Flyokai\Misc\ProfilerFacade::start('label')</code> / <code>stop('label')</code> — no-op when disabled.</li>
+<li><strong>Trace driver</strong>: set <code>REVOLT_DRIVER_DEBUG_TRACE=1</code> to wrap the event-loop driver in a tracer that records callback registration sites.</li>
+<li><strong>Cluster IPC</strong>: cluster workers report via <code>WatcherMessageProcessor</code>; pipe the log to the coordinator for correlated tracing.</li>
 </ul>
-<h2 id="schema-architecture">Schema architecture<a class="headerlink" href="#schema-architecture" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Solid DTOs tagged with #[Table]
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>   ▼
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>SchemaDiscovery (walks Registry::modules() + PSR-4 roots)
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>   ▼
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>SchemaModel (declared)
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>                   ┐
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>INFORMATION_SCHEMA ┴─► SchemaIntrospector ──► SchemaModel (existing)
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>                                                    │
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>                          ◄────  SchemaDiffer  ─────┘
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>                                       │
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>                                       ▼
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                                 SchemaPlan (TableDiff[])
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>                                       │
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>                                       ▼
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>                          SchemaApplier (two passes: structure → FKs)
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>                                       │
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>                                       ▼
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>                              MySQL ALTER / CREATE
-</span></code></pre></div>
-<ul>
-<li><code>flyokai/db-schema</code> is the engine.</li>
-<li>The <code>Setup\Step\ApplySchema</code> step is <code>Repeatable</code> and runs on every <code>setup:install</code> / <code>setup:upgrade</code>.</li>
-<li>Drops are gated behind <code>FLYOK_DB_SCHEMA_ALLOW_DESTRUCTIVE=1</code>.</li>
-</ul>
-<h2 id="search-criteria-architecture">Search-criteria architecture<a class="headerlink" href="#search-criteria-architecture" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>raw JSON
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   ▼  CriteriaJsonNormalizer
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>canonical array
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   ▼  CriteriaMapper
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>typed SearchCriteria
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>   ▼  FieldCollector → BaseColumnValidator → JoinResolver
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>fields validated, joins resolved
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>   ▼  SelectCompiler
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Laminas\Db\Sql\Select  →  bound, executed, mapped to Solid DTOs
-</span></code></pre></div>
-<p><code>flyokai/search-criteria</code> plugs into any repository via <code>CriteriaRepositoryTrait</code>.</p>
 
 
 

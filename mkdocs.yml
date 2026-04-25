@@ -1,9 +1,9 @@
 site_name: Flyokai
 site_description: Async PHP application framework — documentation
 site_url: https://docs.flyokai.com/
-repo_url: https://github.com/flyokai/docs
-repo_name: flyokai/docs
-edit_uri: edit/main/docs/
+repo_url: https://github.com/flyokai/flyokai
+repo_name: flyokai/flyokai
+edit_uri: blob/main/docs/
 
 theme:
   name: material
@@ -74,10 +74,19 @@ plugins:
 
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
+  - Getting started: getting-started.md
   - Architecture: architecture.md
-  - Modules: modules.md
-  - Reference: reference.md
+  - Asynchrony: asynchrony.md
+  - Dependency injection: dependency-injection.md
+  - Scaffolding: scaffolding.md
+  - CLI binaries: cli.md
+  - Setup & deploy: setup-and-deploy.md
+  - Upgrading: upgrading.md
+  - CI: ci.md
+  - Composer repositories: composer-repositories.md
+  - Module naming: module-naming.md
+  - Glossary: glossary.md
+  - Troubleshooting: troubleshooting.md
 
 extra:
   social:

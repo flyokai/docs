@@ -3,7 +3,7 @@ site_description: Async PHP application framework — documentation
 site_url: https://docs.flyokai.com/
 repo_url: https://github.com/flyokai/flyokai
 repo_name: flyokai/flyokai
-edit_uri: blob/dev/docs/
+edit_uri: blob/main/docs/
 
 theme:
   name: material

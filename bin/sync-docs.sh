@@ -32,7 +32,7 @@ strip_agent_nav() {
 # Cross-package links point at sibling repos that aren't part of this site.
 # Rewrite them to absolute GitHub URLs so they resolve, instead of 404'ing.
 # Patterns handled:
-#   ../../<pkg>/README.md[#anchor]                 → github.com/flyokai/<pkg>/blob/dev/README.md
+#   ../../<pkg>/README.md[#anchor]                 → github.com/flyokai/<pkg>/blob/main/README.md
 #   ../../<pkg>/AGENTS.md (and CHANGELOG/CONTRIBUTING/SECURITY)
 #   ../../<pkg>/.agents/{skills,commands}/<x>.md   → blob/main/.agents/...
 #   ../.agents/{skills,commands}/<x>.md            → flyokai/flyokai blob/main/.agents/...
@@ -43,10 +43,10 @@ rewrite_links() {
     # bare `.agents/...` rewrite (pattern 3), otherwise the latter would catch
     # the shared suffix.
     sed -E \
-        -e 's@\((\.\./)+([a-z][a-z0-9_-]*)/(README|AGENTS|CHANGELOG|CONTRIBUTING|SECURITY)\.md(#[a-z0-9_-]+)?\)@(https://github.com/flyokai/\2/blob/dev/\3.md\4)@g' \
-        -e 's@\((\.\./)+([a-z][a-z0-9_-]*)/\.agents/(skills|commands)/([a-z0-9_-]+)\.md\)@(https://github.com/flyokai/\2/blob/dev/.agents/\3/\4.md)@g' \
-        -e 's@\((\.\./)*\.agents/(skills|commands)/([a-z0-9_-]+)\.md\)@(https://github.com/flyokai/flyokai/blob/dev/.agents/\2/\3.md)@g' \
-        -e 's@\((\.\./)+\.github/([^)]+)\)@(https://github.com/flyokai/flyokai/blob/dev/.github/\2)@g' \
+        -e 's@\((\.\./)+([a-z][a-z0-9_-]*)/(README|AGENTS|CHANGELOG|CONTRIBUTING|SECURITY)\.md(#[a-z0-9_-]+)?\)@(https://github.com/flyokai/\2/blob/main/\3.md\4)@g' \
+        -e 's@\((\.\./)+([a-z][a-z0-9_-]*)/\.agents/(skills|commands)/([a-z0-9_-]+)\.md\)@(https://github.com/flyokai/\2/blob/main/.agents/\3/\4.md)@g' \
+        -e 's@\((\.\./)*\.agents/(skills|commands)/([a-z0-9_-]+)\.md\)@(https://github.com/flyokai/flyokai/blob/main/.agents/\2/\3.md)@g' \
+        -e 's@\((\.\./)+\.github/([^)]+)\)@(https://github.com/flyokai/flyokai/blob/main/.github/\2)@g' \
         -e 's@\(\.\./README\.md\)@(index.md)@g'
 }
 
@@ -56,7 +56,7 @@ rewrite_links() {
 # Inject frontmatter so the "Edit this page" link points at the
 # upstream README.md, not the non-existent docs/index.md.
 {
-    printf -- '---\nedit_url: https://github.com/flyokai/flyokai/blob/dev/README.md\n---\n\n'
+    printf -- '---\nedit_url: https://github.com/flyokai/flyokai/blob/main/README.md\n---\n\n'
     strip_agent_nav "$SRC/README.md" \
         | sed -E 's@\(docs/([a-z][a-z0-9_-]*\.md)\)@(\1)@g' \
         | rewrite_links

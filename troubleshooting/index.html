@@ -1715,7 +1715,7 @@
 <li><code>composer dump-autoload</code> was re-run after adding the package.</li>
 <li>Your DTO <code>implements Flyokai\DataMate\Solid</code> (the discovery filter requires it).</li>
 </ol>
-<p>→ See <code>flyokai/db-schema</code> <a href="https://github.com/flyokai/db-schema/blob/dev/README.md"><code>README.md</code></a>, section <em>How it works</em>.</p>
+<p>→ See <code>flyokai/db-schema</code> <a href="https://github.com/flyokai/db-schema/blob/main/README.md"><code>README.md</code></a>, section <em>How it works</em>.</p>
 <h3 id="setupinstall-errors-with-logicexception-parameter-foo-has-unionintersectionno-type"><code>setup:install</code> errors with <code>LogicException: parameter $foo has union/intersection/no type</code><a class="headerlink" href="#setupinstall-errors-with-logicexception-parameter-foo-has-unionintersectionno-type" title="Permanent link">&para;</a></h3>
 <p>A <code>#[Column]</code> attribute is missing on a parameter whose PHP type the schema can't infer. Add <code>#[Column(type: 'varchar', length: 64)]</code> (or another explicit type) to that parameter.</p>
 <h3 id="my-new-table-was-registered-but-setupupgrade-reports-attempting-to-drop-column">My new <code>#[Table]</code> was registered but <code>setup:upgrade</code> reports <code>attempting to drop column …</code><a class="headerlink" href="#my-new-table-was-registered-but-setupupgrade-reports-attempting-to-drop-column" title="Permanent link">&para;</a></h3>

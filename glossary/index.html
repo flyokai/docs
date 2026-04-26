@@ -1054,7 +1054,7 @@
 <tr>
 <td><strong>ACL</strong></td>
 <td>Laminas <code>Permissions\Acl</code> instance built lazily by <code>AclProvider</code>. Modules contribute resources/roles via tuners.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong>AGENTS.md</strong></td>
@@ -1064,37 +1064,37 @@
 <tr>
 <td><strong>Alias (DI)</strong></td>
 <td>A one-way map from interface to implementation registered via <code>AliasResolverImpl</code>. Asking for the interface returns the implementation; asking for the implementation directly does not go through the alias.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#alias-resolution"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#alias-resolution"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong>AltId</strong></td>
 <td>An alternative or composite identity for a DTO (e.g. <code>username</code>, <code>email</code>) declared via <code>static $altIdKeys</code>. Returned by <code>altId(...)</code>.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md#identity"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md#identity"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong><code>AmpConnectionPool</code></strong></td>
 <td>The native AMPHP-MySQL connection pool. One of three <code>ConnectionPool</code> implementations in Flyokai.</td>
-<td><a href="https://github.com/flyokai/laminas-db-driver-amp/blob/dev/README.md"><code>flyokai/laminas-db-driver-amp</code></a></td>
+<td><a href="https://github.com/flyokai/laminas-db-driver-amp/blob/main/README.md"><code>flyokai/laminas-db-driver-amp</code></a></td>
 </tr>
 <tr>
 <td><strong><code>AsyncMysqliConnectionPool</code></strong></td>
 <td>The default Flyokai <code>ConnectionPool</code>. Uses <code>MYSQLI_ASYNC</code> + <code>EventLoop::onMysqli()</code>.</td>
-<td><a href="https://github.com/flyokai/laminas-db-driver-async/blob/dev/README.md#asyncmysqli"><code>flyokai/laminas-db-driver-async</code></a></td>
+<td><a href="https://github.com/flyokai/laminas-db-driver-async/blob/main/README.md#asyncmysqli"><code>flyokai/laminas-db-driver-async</code></a></td>
 </tr>
 <tr>
 <td><strong><code>AsyncPdoConnectionPool</code></strong></td>
 <td>Worker-pool-based PDO <code>ConnectionPool</code>. Process-isolated.</td>
-<td><a href="https://github.com/flyokai/laminas-db-driver-async/blob/dev/README.md#asyncpdo"><code>flyokai/laminas-db-driver-async</code></a></td>
+<td><a href="https://github.com/flyokai/laminas-db-driver-async/blob/main/README.md#asyncpdo"><code>flyokai/laminas-db-driver-async</code></a></td>
 </tr>
 <tr>
 <td><strong>ApplicationType</strong></td>
 <td>Enum (<code>Setup</code>, <code>Cluster</code>, <code>Worker</code>, <code>Task</code>, <code>Web</code>, <code>Cli</code>) — controls which module bootstraps load.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#application-types"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#application-types"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong>Bootstrap (module)</strong></td>
 <td>A class declared via <code>Registry::addModule()</code> that registers DI config and runs <code>init()</code> / <code>bootstrap()</code> during application startup.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#bootstrap-lifecycle"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#bootstrap-lifecycle"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong>CLAUDE.md</strong></td>
@@ -1104,32 +1104,32 @@
 <tr>
 <td><strong>Composition (DI)</strong></td>
 <td>An ordered collection of items, sorted topologically via <code>before</code> / <code>after</code> / <code>depends</code>. Implemented as <code>CompositionOrdered</code> + <code>CompositionItem</code> in amphp-injector.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#compositions-ordered-collections"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#compositions-ordered-collections"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong>Composition (module)</strong></td>
 <td>The framework-level topological-sort utility (<code>sortComposition</code>, <code>castCompositionArgument</code>) used to order modules and pipeline items. Same idea, different layer.</td>
-<td><a href="https://github.com/flyokai/composition/blob/dev/README.md"><code>flyokai/composition</code></a></td>
+<td><a href="https://github.com/flyokai/composition/blob/main/README.md"><code>flyokai/composition</code></a></td>
 </tr>
 <tr>
 <td><strong><code>ConfigPile</code></strong></td>
 <td>Two-layer config object — default + local. Path-based access (<code>get('db/connection/default/host')</code>).</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#configpile"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#configpile"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong><code>ConnectionPool</code></strong></td>
 <td>Factory contract for DB pools. Implementations: <code>Amp</code>, <code>AsyncPdo</code>, <code>AsyncMysqli</code>, <code>TwoLevel</code>.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#database"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#database"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong><code>Context</code> (channel-dispatcher)</strong></td>
 <td>Per-request data attached by the dispatcher: <code>dispatcher</code> weakref, <code>sendRequest</code>, iterator storage.</td>
-<td><a href="https://github.com/flyokai/amp-channel-dispatcher/blob/dev/README.md#concepts"><code>flyokai/amp-channel-dispatcher</code></a></td>
+<td><a href="https://github.com/flyokai/amp-channel-dispatcher/blob/main/README.md#concepts"><code>flyokai/amp-channel-dispatcher</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[Column]</code></strong></td>
 <td>Parameter attribute on a Solid DTO that overrides any subset of the inferred column definition (type, length, nullable, default, …).</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong>diconfig file</strong></td>
@@ -1139,12 +1139,12 @@
 <tr>
 <td><strong>Draft</strong></td>
 <td>Marker interface for mutable, schema-flexible DTOs. Pairs with a Solid for input staging.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong><code>Dto</code></strong></td>
 <td>Base interface every DTO obeys: <code>toArray</code>, <code>toDbRow</code>, <code>with</code>, <code>cloneWith</code>, <code>fromArgs</code>.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong>Edition</strong></td>
@@ -1154,97 +1154,97 @@
 <tr>
 <td><strong><code>EventLoop</code> (Revolt)</strong></td>
 <td>The static event-loop API. <code>defer</code>, <code>delay</code>, <code>repeat</code>, <code>onReadable</code>, <code>onWritable</code>, <code>onSignal</code>, <code>onMysqli</code>, <code>getSuspension</code>.</td>
-<td><a href="https://github.com/flyokai/revolt-event-loop/blob/dev/README.md"><code>flyokai/revolt-event-loop</code></a></td>
+<td><a href="https://github.com/flyokai/revolt-event-loop/blob/main/README.md"><code>flyokai/revolt-event-loop</code></a></td>
 </tr>
 <tr>
 <td><strong>Execution (generic)</strong></td>
 <td>A composable side-effect runner — <code>Execution&lt;TContext&gt;</code> from <code>flyokai/generic</code>.</td>
-<td><a href="https://github.com/flyokai/generic/blob/dev/README.md#executions"><code>flyokai/generic</code></a></td>
+<td><a href="https://github.com/flyokai/generic/blob/main/README.md#executions"><code>flyokai/generic</code></a></td>
 </tr>
 <tr>
 <td><strong>Fiber</strong></td>
 <td>PHP 8.1+ stackful coroutine. Every Revolt callback runs in its own fiber.</td>
-<td><a href="https://github.com/flyokai/revolt-event-loop/blob/dev/README.md"><code>flyokai/revolt-event-loop</code></a></td>
+<td><a href="https://github.com/flyokai/revolt-event-loop/blob/main/README.md"><code>flyokai/revolt-event-loop</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[ForeignKey]</code></strong></td>
 <td>Class-level attribute on a Solid DTO. <code>referencesDto</code> is a class-string; resolved to the target's table name in a second discovery pass.</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong>GreyData</strong></td>
 <td>Marker interface for dynamic key/value DTOs backed by a <code>$data</code> array. Used for API payloads, third-party blobs.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong><code>HasId</code> / <code>HasAltId</code> / <code>HasIdDto</code></strong></td>
 <td>Identity interfaces — primary id, alternative ids, combined Dto+id.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md#identity"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md#identity"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong>HandlerGuard</strong></td>
 <td>HTTP middleware that runs <code>Authorization::isAllowed()</code> (or a <code>RequestDefender</code> for the data-service) before delegating to the handler.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#http-flow"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#http-flow"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong>Indexer</strong></td>
 <td>Implementation of <code>Flyokai\Indexer\Indexer</code>. Registered via DI composition; orchestrated by <code>IndexerFacade</code>; status persisted in <code>flyok_indexer</code>.</td>
-<td><a href="https://github.com/flyokai/indexer/blob/dev/README.md"><code>flyokai/indexer</code></a></td>
+<td><a href="https://github.com/flyokai/indexer/blob/main/README.md"><code>flyokai/indexer</code></a></td>
 </tr>
 <tr>
 <td><strong><code>InsertOnDuplicate</code></strong></td>
 <td>Bulk MySQL upsert builder with batching, ID resolution, and <code>FOREIGN_KEY_CHECKS</code> management.</td>
-<td><a href="https://github.com/flyokai/laminas-db-bulk-update/blob/dev/README.md"><code>flyokai/laminas-db-bulk-update</code></a></td>
+<td><a href="https://github.com/flyokai/laminas-db-bulk-update/blob/main/README.md"><code>flyokai/laminas-db-bulk-update</code></a></td>
 </tr>
 <tr>
 <td><strong>Lifecycle</strong></td>
 <td>An interface (<code>start()</code> / <code>stop()</code>) implemented by services that need ordered startup/shutdown. The <code>Application</code> walks dependencies forward on start, reverse on stop.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#lifecycle"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#lifecycle"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong><code>LicWiseRequest</code></strong></td>
 <td>Marker interface for inter-service requests that require license validation.</td>
-<td><a href="https://github.com/flyokai/data-service-message/blob/dev/README.md"><code>flyokai/data-service-message</code></a></td>
+<td><a href="https://github.com/flyokai/data-service-message/blob/main/README.md"><code>flyokai/data-service-message</code></a></td>
 </tr>
 <tr>
 <td><strong>Module</strong></td>
 <td>A package whose <code>bootstrap.php</code> calls <code>Registry::addModule()</code>. Has a <code>Bootstrap\Type\*</code> marker per app type and <code>config/diconfig*.php</code> files.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#bootstrap-lifecycle"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#bootstrap-lifecycle"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[PrivateParameter]</code></strong></td>
 <td>Attribute on a constructor parameter — resolved by <code>runtimeTypes()</code> weaver to a fresh instance per injection site.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong>Repeatable (setup step)</strong></td>
 <td>A setup step that runs on every <code>setup:upgrade</code> (vs. one-shot install steps). Used by <code>db-schema</code>'s <code>ApplySchema</code>.</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#setup-integration"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#setup-integration"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong>Repository</strong></td>
 <td>A class implementing <code>SearchableRepository</code> (or otherwise loaded into <code>RepositoryContainer</code>) keyed by entity type.</td>
-<td><a href="https://github.com/flyokai/search-criteria/blob/dev/README.md#repository-contract"><code>flyokai/search-criteria</code></a></td>
+<td><a href="https://github.com/flyokai/search-criteria/blob/main/README.md#repository-contract"><code>flyokai/search-criteria</code></a></td>
 </tr>
 <tr>
 <td><strong><code>RouterBuilder</code></strong></td>
 <td>Frozen-after-start builder that wraps every route with a <code>HandlerGuard</code> and registers middleware.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md#http-flow"><code>flyokai/application</code></a>, <a href="https://github.com/flyokai/data-service/blob/dev/README.md"><code>flyokai/data-service</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md#http-flow"><code>flyokai/application</code></a>, <a href="https://github.com/flyokai/data-service/blob/main/README.md"><code>flyokai/data-service</code></a></td>
 </tr>
 <tr>
 <td><strong><code>searchCompiler</code></strong></td>
 <td>DI singleton orchestrating the six-stage criteria compile pipeline.</td>
-<td><a href="https://github.com/flyokai/search-criteria/blob/dev/README.md"><code>flyokai/search-criteria</code></a></td>
+<td><a href="https://github.com/flyokai/search-criteria/blob/main/README.md"><code>flyokai/search-criteria</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[ServiceParameter]</code></strong></td>
 <td>Attribute on a constructor parameter — resolved by <code>runtimeTypes()</code> weaver to a shared singleton of the parameter's type.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[SharedParameter]</code></strong></td>
 <td>Attribute on a constructor parameter — resolved to a shared instance scoped to the current definition.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 <tr>
 <td><strong>Skill</strong></td>
@@ -1254,37 +1254,37 @@
 <tr>
 <td><strong>Solid</strong></td>
 <td>Marker interface for immutable, constructor-validated DTOs. Properties typically <code>public readonly</code>.</td>
-<td><a href="https://github.com/flyokai/data-mate/blob/dev/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
+<td><a href="https://github.com/flyokai/data-mate/blob/main/README.md#the-data-state-model"><code>flyokai/data-mate</code></a></td>
 </tr>
 <tr>
 <td><strong><code>SchemaModel</code></strong></td>
 <td>The unified value object that carries a declared or introspected MySQL schema.</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#how-it-works"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#how-it-works"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong><code>#[Table]</code></strong></td>
 <td>Class-level attribute on a Solid DTO declaring the MySQL table name (and optional alias used by <code>search-criteria</code>).</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#attribute-reference"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong>TableModel</strong></td>
 <td>The single value object carried by every db-schema pipeline stage (declared, introspected, diffed).</td>
-<td><a href="https://github.com/flyokai/db-schema/blob/dev/README.md#how-it-works"><code>flyokai/db-schema</code></a></td>
+<td><a href="https://github.com/flyokai/db-schema/blob/main/README.md#how-it-works"><code>flyokai/db-schema</code></a></td>
 </tr>
 <tr>
 <td><strong>Tuner (generic)</strong></td>
 <td>A composable state mutator — <code>Tuner&lt;T&gt;</code> from <code>flyokai/generic</code>. Containers run them in topological order.</td>
-<td><a href="https://github.com/flyokai/generic/blob/dev/README.md#composing-tuners"><code>flyokai/generic</code></a></td>
+<td><a href="https://github.com/flyokai/generic/blob/main/README.md#composing-tuners"><code>flyokai/generic</code></a></td>
 </tr>
 <tr>
 <td><strong><code>TwoLevelConnectionPool</code></strong></td>
 <td>A hybrid <code>ConnectionPool</code> that tries a primary pool first and falls back to a secondary.</td>
-<td><a href="https://github.com/flyokai/application/blob/dev/README.md"><code>flyokai/application</code></a></td>
+<td><a href="https://github.com/flyokai/application/blob/main/README.md"><code>flyokai/application</code></a></td>
 </tr>
 <tr>
 <td><strong>Weaver</strong></td>
 <td>Parameter resolver in amphp-injector. <code>names()</code>, <code>types()</code>, <code>runtimeTypes()</code>, <code>automaticTypes()</code>, chained via <code>any()</code>.</td>
-<td><a href="https://github.com/flyokai/amphp-injector/blob/dev/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
+<td><a href="https://github.com/flyokai/amphp-injector/blob/main/README.md#weavers"><code>flyokai/amphp-injector</code></a></td>
 </tr>
 </tbody>
 </table>

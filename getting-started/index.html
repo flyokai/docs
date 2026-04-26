@@ -1242,7 +1242,7 @@
 </span></code></pre></div>
 <p>Run <code>php bin/flyok-setup upgrade</code> — <code>db-schema</code> discovers the new <code>#[Table]</code> and emits a <code>CREATE TABLE</code>. Re-run anytime; it's idempotent.</p>
 <h2 id="5-add-an-http-endpoint">5. Add an HTTP endpoint<a class="headerlink" href="#5-add-an-http-endpoint" title="Permanent link">&para;</a></h2>
-<p>Use the <a href="https://github.com/flyokai/flyokai/blob/dev/.agents/skills/new-endpoint.md"><code>new-endpoint</code></a> skill to scaffold a controller, register a route, and gate it with OAuth. Or by hand:</p>
+<p>Use the <a href="https://github.com/flyokai/flyokai/blob/main/.agents/skills/new-endpoint.md"><code>new-endpoint</code></a> skill to scaffold a controller, register a route, and gate it with OAuth. Or by hand:</p>
 <div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">namespace App\Controller;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">use Amp\Http\Server\HttpErrorException;</span>
@@ -1279,7 +1279,7 @@
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">    &#39;withTotal&#39; =&gt; true,</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">]);</span>
 </span></code></pre></div>
-<p><code>flyokai/search-criteria</code> validates fields, auto-discovers joins from <code>#[ForeignKey]</code>, and emits parameterised SQL. See <a href="https://github.com/flyokai/search-criteria/blob/dev/README.md"><code>search-criteria/README.md</code></a>.</p>
+<p><code>flyokai/search-criteria</code> validates fields, auto-discovers joins from <code>#[ForeignKey]</code>, and emits parameterised SQL. See <a href="https://github.com/flyokai/search-criteria/blob/main/README.md"><code>search-criteria/README.md</code></a>.</p>
 <h2 id="where-to-go-next">Where to go next<a class="headerlink" href="#where-to-go-next" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../architecture/"><code>architecture.md</code></a> — bootstrap lifecycle, HTTP / data-service flow, DB layer</li>

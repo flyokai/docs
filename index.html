@@ -1727,8 +1727,9 @@
 <h1 id="flyokai">Flyokai<a class="headerlink" href="#flyokai" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><strong>Async PHP application framework on AMPHP 3.x and Revolt</strong> — bootstrap lifecycle, HTTP server, CLI, async database drivers, OAuth, ACL, indexer, declarative schema, DTO toolkit, and a DI container designed for module composition.</p>
+<p><strong>Monorepo:</strong> this repository now holds every <code>flyokai/*</code> package under <a href="packages"><code>packages/</code></a> and the Shopware plugins under <a href="plugins"><code>plugins/</code></a>. The standalone <code>flyokai/*</code> repos are read-only mirrors produced by splitting. See <a href="docs/MONOREPO.md"><code>docs/MONOREPO.md</code></a> for the path-repo workflow, parallel worktrees, and splitting.</p>
 </blockquote>
-<p>Flyokai is a metapackage. The framework itself lives in <a href="#module-catalog"><code>vendor/flyokai/*</code></a> — every module ships its own <code>README.md</code>, <code>CLAUDE.md</code>, and <code>AGENTS.md</code>. This package is the central place to learn the system: a quickstart, the architecture overview, the module catalog, and pointers into the rest of the docs.</p>
+<p>Flyokai is a metapackage. The framework itself lives in <a href="#module-catalog"><code>packages/*</code></a> — every module ships its own <code>README.md</code>, <code>CLAUDE.md</code>, and <code>AGENTS.md</code>. This package is the central place to learn the system: a quickstart, the architecture overview, the module catalog, and pointers into the rest of the docs.</p>
 <h2 id="why-flyokai">Why Flyokai<a class="headerlink" href="#why-flyokai" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Cooperative async, end-to-end.</strong> HTTP, MySQL (PDO and MySQLi), CSV, OpenSearch, channels — none of them block.</li>

@@ -1197,6 +1197,27 @@ working <strong>symlinked</strong> plugin vendor (the dev setup). <code>bin/vend
 <li>overlays the fresher flyokai/* straight from the monorepo <code>packages/</code>;</li>
 <li>verifies every key <code>patchAutoloader</code> path resolves.</li>
 </ol>
+<blockquote>
+<p><strong><code>flyokai/application</code> is trimmed, not shipped whole.</strong> The full package is the
+cluster runtime (~250 files, 1.2 MB), but <code>application-core</code> already holds the real
+implementations of the leaf classes the embedded plugin uses. From <code>application</code>
+the embedded path loads only <strong>12 files</strong>: 6 <code>class_alias</code> bridge shims + 1 bridge
+trait (legacy <code>Flyokai\Application\*</code> → <code>\ApplicationCore\*</code>, eager-required in
+<code>patchAutoloader</code>), plus the 5 custom Laminas Ddl Column classes
+(<code>json</code>/<code>longtext</code>/<code>mediumtext</code>/<code>smallint</code>/<code>timestamp</code>) that <code>db-schema</code>'s
+<code>ColumnFactory</code> instantiates during <code>applyMarketplaceSchema()</code> on install/update.
+Everything else (Acl, Bootstrap, Console, Cluster, Setup, …) is cluster-only and
+never autoloaded in embedded mode, so <code>vendor-plugin.sh</code> copies just the keep-list
+(→ 48 KB) and the build checks fail loudly if a keep-list file goes missing. The
+clean activate in the smoke test — which runs schema apply — is the proof the
+trimmed set is sufficient.</p>
+<p><strong><code>doctrine/collections</code> (+<code>doctrine/deprecations</code>) must be in <code>REF_VENDOR</code>.</strong>
+<code>commerceguys/addressing</code>'s <code>Subdivision::getChildren()</code> returns a
+<code>Doctrine\Common\Collections\ArrayCollection</code>, and a clean Shopware install has no
+<code>doctrine/collections</code> (core ships dbal, not the ORM). <code>patchAutoloader</code> registers
+both prefixes from the bundled vendor; the smoke test's
+<code>/locations/countries/US/subdivisions</code> check is the one that exercises this path.</p>
+</blockquote>
 <p>Shopware-provided libraries (<code>symfony/*</code>, <code>twig/*</code>) are intentionally <strong>not</strong>
 bundled — they come from the host's root vendor on any Shopware install.</p>
 <p>Override the source when the default reference isn't present:

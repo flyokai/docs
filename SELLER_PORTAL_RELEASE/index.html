@@ -1025,10 +1025,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#validation-clean-room-smoke-test" class="md-nav__link">
+  <a href="#deploy-smoke-clean-room-validation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation — clean-room smoke test
+        Deploy + smoke (clean-room validation)
       
     </span>
   </a>
@@ -1199,18 +1199,19 @@ working <strong>symlinked</strong> plugin vendor (the dev setup). <code>bin/vend
 </ol>
 <blockquote>
 <p><strong><code>flyokai/application</code> is trimmed, not shipped whole.</strong> The full package is the
-cluster runtime (~250 files, 1.2 MB), but <code>application-core</code> already holds the real
-implementations of the leaf classes the embedded plugin uses. From <code>application</code>
-the embedded path loads only <strong>12 files</strong>: 6 <code>class_alias</code> bridge shims + 1 bridge
-trait (legacy <code>Flyokai\Application\*</code> → <code>\ApplicationCore\*</code>, eager-required in
-<code>patchAutoloader</code>), plus the 5 custom Laminas Ddl Column classes
-(<code>json</code>/<code>longtext</code>/<code>mediumtext</code>/<code>smallint</code>/<code>timestamp</code>) that <code>db-schema</code>'s
-<code>ColumnFactory</code> instantiates during <code>applyMarketplaceSchema()</code> on install/update.
-Everything else (Acl, Bootstrap, Console, Cluster, Setup, …) is cluster-only and
-never autoloaded in embedded mode, so <code>vendor-plugin.sh</code> copies just the keep-list
-(→ 48 KB) and the build checks fail loudly if a keep-list file goes missing. The
-clean activate in the smoke test — which runs schema apply — is the proof the
-trimmed set is sufficient.</p>
+cluster runtime (~250 files, 1.2 MB), but <code>application-core</code> holds the real impls
+of the leaf classes the embedded plugin uses, and consumers reference
+<code>\Flyokai\ApplicationCore\*</code> directly (the legacy <code>class_alias</code> shims were removed
+in 546342e3). From <code>application</code> the embedded path now loads only <strong>6 files</strong>:
+<code>Base/ExtensionRepositoryTrait.php</code> (real bridge trait — <code>SellerRepositoryImpl</code>
+still <code>use</code>s the legacy namespace; traits can't be <code>class_alias</code>'d) and 5 custom
+Laminas Ddl Column classes (<code>json</code>/<code>longtext</code>/<code>mediumtext</code>/<code>smallint</code>/<code>timestamp</code>)
+that <code>db-schema</code>'s <code>ColumnFactory</code> instantiates during <code>applyMarketplaceSchema()</code>
+on install/update. Everything else (Acl, Bootstrap, Console, Cluster, Setup, …)
+is cluster-only and never autoloaded in embedded mode, so <code>vendor-plugin.sh</code>
+copies just the keep-list and the build checks fail loudly if a keep-list file
+goes missing. The clean activate in the smoke test — which runs schema apply —
+is the proof the trimmed set is sufficient.</p>
 <p><strong><code>doctrine/collections</code> (+<code>doctrine/deprecations</code>) must be in <code>REF_VENDOR</code>.</strong>
 <code>commerceguys/addressing</code>'s <code>Subdivision::getChildren()</code> returns a
 <code>Doctrine\Common\Collections\ArrayCollection</code>, and a clean Shopware install has no
@@ -1222,23 +1223,39 @@ both prefixes from the bundled vendor; the smoke test's
 bundled — they come from the host's root vendor on any Shopware install.</p>
 <p>Override the source when the default reference isn't present:
 <code>REF_VENDOR=/path/to/working/plugin/vendor bin/vendor-plugin.sh</code>.</p>
-<h3 id="validation-clean-room-smoke-test">Validation — clean-room smoke test<a class="headerlink" href="#validation-clean-room-smoke-test" title="Permanent link">&para;</a></h3>
-<p><code>bin/smoke-test-portal.sh</code> is the <strong>authoritative</strong> release check. Default target
-<code>/www/sw6710st/sw6710st</code> (→ <code>https://sw6710st.loc</code>) — a Shopware install that
-does NOT symlink the monorepo and has NO <code>flyokai/*</code> in its root vendor, so the
-plugin runs purely off its bundled <code>vendor/</code> + <code>patchAutoloader</code>. It:</p>
-<ol>
-<li>builds the self-contained zip (<code>package-plugin.sh</code>),</li>
-<li>deploys it to <code>custom/plugins/FlyokaiMarketplace</code> and <code>plugin:install --activate</code>
-   (or <code>:update</code> on re-runs) — <strong>a clean activate proves the shipped vendor is
-   complete</strong> (no backfill to mask gaps),</li>
-<li>HTTP-checks <code>/seller-portal</code> (shell + injected <code>window.__PORTAL_CONFIG__</code> incl.
-   <code>marketplacePrefix=/flyok-portal</code>), a portal asset, and the marketplace API.</li>
-</ol>
-<p>The script <strong>refuses</strong> to run against a backfilled/symlinked install. Re-run it
-to iterate on releases. (<code>/www/sw6710/sw6710</code> stays a dev box — the portal runs
-there as a Vite dev server from <code>portals/seller-portal</code>, not the bundled route.)</p>
+<h3 id="deploy-smoke-clean-room-validation">Deploy + smoke (clean-room validation)<a class="headerlink" href="#deploy-smoke-clean-room-validation" title="Permanent link">&para;</a></h3>
+<p>Two scripts — both take the target Shopware install as a required positional arg
+(no env-var defaults; you say where it goes):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bin/deploy-plugin.sh<span class="w"> </span>&lt;SW_DIR&gt;<span class="w">             </span><span class="c1"># build zip, install, activate, build admin</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>bin/smoke-portal.sh<span class="w">   </span>&lt;SW_DIR&gt;<span class="w"> </span><span class="o">[</span>BASE_URL<span class="o">]</span><span class="w"> </span><span class="c1"># HTTP checks against a deployed install</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>bin/smoke-portal.sh<span class="w"> </span>--deploy<span class="w"> </span>&lt;SW_DIR&gt;<span class="w">     </span><span class="c1"># deploy + check in one command</span>
+</span></code></pre></div>
+<p>The canonical target is <code>/www/sw6710st/sw6710st</code> (→ <code>https://sw6710st.loc</code>) — a
+Shopware install that does NOT symlink the monorepo and has NO <code>flyokai/*</code> in its
+root vendor, so the plugin runs purely off its bundled <code>vendor/</code> +
+<code>patchAutoloader</code>. Both scripts <strong>refuse</strong> any install that fails the clean-room
+guards (symlinked plugin, or <code>flyokai/*</code> in root vendor would mask gaps).
+(<code>/www/sw6710/sw6710</code> stays a dev box — the portal runs there as a Vite dev
+server from <code>portals/seller-portal</code>, not the bundled route.)</p>
+<p><code>deploy-plugin.sh</code> does: <code>package-plugin.sh</code> → unzip to <code>custom/plugins/</code> →
+<code>plugin:refresh</code> → <code>plugin:install --activate</code> (or <code>:update</code> on re-runs) — <strong>a
+clean activate proves the shipped vendor is complete</strong> — → <code>build-administration.sh</code>
+(compiles per-plugin admin into <code>Resources/public/administration/</code>, else <code>/admin</code>
+shows no FlyokaiMarketplace menu items) → <code>assets:install</code> → <code>cache:clear</code>.</p>
+<p><code>smoke-portal.sh</code> HTTP-checks <code>/seller-portal</code> (shell + injected
+<code>window.__PORTAL_CONFIG__</code> incl. <code>marketplacePrefix=/flyok-portal</code>), the
+marketplace API (<code>/flyok-portal/locations/countries</code>), the doctrine-bundled
+path (<code>/locations/countries/US/subdivisions</code>), a hashed portal asset, <strong>and the
+compiled admin bundle</strong> (<code>/bundles/flyokaimarketplace/administration/assets/
+flyokai-marketplace-*.js</code>) — the last one is the proof that admin built and the
+sidebar entries will render.</p>
 <blockquote>
+<p><strong>TODO — ship pre-built admin in the zip.</strong> <code>deploy-plugin.sh</code> runs
+<code>build-administration.sh</code> on the install (~30 s, needs Node + the install's
+npm deps). The Shopware Store recommends shipping pre-built admin so customer
+installs don't need a JS build toolchain. Tooling option: <code>shopware-cli
+extension build</code> builds a single extension in isolation, suitable for
+packaging into the zip.</p>
 <p><strong>Login prerequisite:</strong> the bundled portal injects the OAuth <code>client_secret</code>
 from system config, persisted only for clients created <em>after</em> the
 plaintext-secret change. On a fresh/pre-existing install run
@@ -1256,16 +1273,17 @@ higher version than the last.</p>
 <code>composer.json</code>, which deliberately has no <code>version</code> so the monorepo
 <code>self.version</code> deps resolve as <code>dev-main</code> on the symlinked dev install. The
 packaging step stamps <code>VERSION</code> into the shipped <code>composer.json</code> and the zip name.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bin/release-plugin.sh<span class="w"> </span>patch<span class="w">     </span><span class="c1"># 1.0.0 -&gt; 1.0.1, then package</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>bin/release-plugin.sh<span class="w"> </span>minor<span class="w">     </span><span class="c1"># -&gt; 1.1.0</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>bin/release-plugin.sh<span class="w"> </span><span class="m">2</span>.3.0<span class="w">     </span><span class="c1"># set explicitly</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>bin/release-plugin.sh<span class="w">           </span><span class="c1"># no bump — repackage at current version</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bin/release-plugin.sh<span class="w"> </span>patch<span class="w">     </span><span class="c1"># 1.0.0 -&gt; 1.0.1, then package</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>bin/release-plugin.sh<span class="w"> </span>minor<span class="w">     </span><span class="c1"># -&gt; 1.1.0</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>bin/release-plugin.sh<span class="w"> </span><span class="m">2</span>.3.0<span class="w">     </span><span class="c1"># set explicitly</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>bin/release-plugin.sh<span class="w">           </span><span class="c1"># no bump — repackage at current version</span>
 </span></code></pre></div>
 <p>It prints the suggested <code>git commit</code>/<code>git tag v&lt;version&gt;</code> (it does not touch git
-itself). Then run <code>bin/smoke-test-portal.sh</code> to validate the new build on the
-clean-room install (it <code>plugin:update</code>s an already-installed version).</p>
+itself). Then run <code>bin/smoke-portal.sh --deploy /www/sw6710st/sw6710st</code> to validate
+the new build on the clean-room install (it <code>plugin:update</code>s an already-installed
+version, rebuilds admin, then HTTP-checks).</p>
 <h2 id="packaging-the-store-zip">Packaging the Store zip<a class="headerlink" href="#packaging-the-store-zip" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bin/package-plugin.sh<span class="w">        </span><span class="c1"># → build/FlyokaiMarketplace-&lt;VERSION&gt;.zip</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bin/package-plugin.sh<span class="w">        </span><span class="c1"># → build/FlyokaiMarketplace-&lt;VERSION&gt;.zip</span>
 </span></code></pre></div>
 <p>It stages the plugin source, <strong>stamps the <code>VERSION</code> into the shipped
 <code>composer.json</code></strong> and <strong>strips the private <code>flyokai/*</code> requires</strong> (they ship in

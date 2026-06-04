@@ -68,6 +68,11 @@ for f in "$SRC/docs"/*.md; do
     strip_agent_nav "$f" | rewrite_links > "$DEST/$(basename "$f")"
 done
 
+# Brand assets (logo, favicon, CSS) — copied verbatim; mkdocs serves them as-is.
+if [[ -d "$SRC/docs/assets" ]]; then
+    cp -R "$SRC/docs/assets" "$DEST/assets"
+fi
+
 # Non-md files mkdocs copies verbatim — the CNAME marks the custom domain.
 echo "docs.flyokai.com" > "$DEST/CNAME"
 

@@ -1764,7 +1764,7 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>php<span class="w"> </span>bin/flyok-setup<span class="w"> </span>upgrade
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># CLI commands</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>php<span class="w"> </span>bin/flyok-console<span class="w"> </span>acl:role:create<span class="w"> </span>--name<span class="w"> </span>admin<span class="w"> </span><span class="s1">&#39;[]&#39;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>php<span class="w"> </span>bin/flyok-console<span class="w"> </span>acl:role:create<span class="w"> </span>--name<span class="w"> </span>admin<span class="w"> </span><span class="s1">'[]'</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>php<span class="w"> </span>bin/flyok-console<span class="w"> </span>user:create<span class="w"> </span>--uname<span class="o">=</span>admin<span class="w"> </span>--email<span class="o">=</span>admin@example.com<span class="w"> </span>--role<span class="o">=</span>admin<span class="w"> </span>--pass<span class="o">=</span>secret123
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>php<span class="w"> </span>bin/flyok-console<span class="w"> </span>oauth:client:create<span class="w"> </span>admin<span class="w"> </span>client_credentials
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
@@ -1821,9 +1821,9 @@
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   ▼
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>RootBootstrap(ApplicationType)
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   │
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   ├── Init phase    — every module&#39;s init() registers DI config files
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   ├── Init phase    — every module's init() registers DI config files
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   ├── Build phase   — Amp Injector Application built from merged definitions
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   └── Bootstrap     — every module&#39;s bootstrap() runs against the live container
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   └── Bootstrap     — every module's bootstrap() runs against the live container
 </span></code></pre></div>
 <h3 id="http-flow">HTTP flow<a class="headerlink" href="#http-flow" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>AMPHP SocketHttpServer → Router → HandlerGuard (Authorization) → Controller → JSON Response
@@ -1864,13 +1864,13 @@
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="x">$definitions = (new Definitions())</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="x">    -&gt;with(singleton(object(MyService::class, arguments(names()</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="x">        -&gt;with(&#39;config&#39;, value([&#39;key&#39; =&gt; &#39;val&#39;]))</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="x">    ))), &#39;my_service&#39;);</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="x">        -&gt;with('config', value(['key' =&gt; 'val']))</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="x">    ))), 'my_service');</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="x">$application = new Application(new Injector(any()), $definitions, &#39;my-app&#39;);</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="x">$application = new Application(new Injector(any()), $definitions, 'my-app');</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="x">$application-&gt;start();</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="x">$svc = $application-&gt;getContainer()-&gt;get(&#39;my_service&#39;);</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="x">$svc = $application-&gt;getContainer()-&gt;get('my_service');</span>
 </span></code></pre></div>
 <ul>
 <li><strong>Definition helpers</strong> — <code>singleton()</code>, <code>object()</code>, <code>value()</code>, <code>factory()</code>, <code>injectableFactory()</code>, <code>compositionFactory()</code>, <code>compositionItem()</code></li>
@@ -1912,8 +1912,8 @@
 </table>
 <p><code>fromArray()</code> — Valinor-flexible. <code>cloneWith()</code> — constructor-strict.</p>
 <h3 id="declarative-schema-flyokaidb-schema">Declarative schema (<code>flyokai/db-schema</code>)<a class="headerlink" href="#declarative-schema-flyokaidb-schema" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">#[Table(name: &#39;flyok_user&#39;, alias: &#39;user&#39;)]</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">#[ForeignKey(name: &#39;fk_user_role&#39;, columns: [&#39;role_id&#39;], referencesDto: RoleSolid::class, referencesColumns: [&#39;role_id&#39;])]</span>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">#[Table(name: 'flyok_user', alias: 'user')]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">#[ForeignKey(name: 'fk_user_role', columns: ['role_id'], referencesDto: RoleSolid::class, referencesColumns: ['role_id'])]</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="x">final class UserSolid implements Solid {</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="x">    public function __construct(</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="x">        #[PrimaryKey(autoIncrement: true)] public readonly int $userId,</span>
@@ -1925,18 +1925,18 @@
 <p><code>bin/flyok-setup upgrade</code> reconciles the live database with the declared model on every run. Drops are opt-in (<code>FLYOK_DB_SCHEMA_ALLOW_DESTRUCTIVE=1</code>).</p>
 <h3 id="search-criteria-flyokaisearch-criteria">Search criteria (<code>flyokai/search-criteria</code>)<a class="headerlink" href="#search-criteria-flyokaisearch-criteria" title="Permanent link">&para;</a></h3>
 <div class="language-php highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">$result = $userRepo-&gt;getList([</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">    &#39;AND&#39; =&gt; [</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">        [&#39;field&#39; =&gt; &#39;status&#39;,    &#39;op&#39; =&gt; &#39;eq&#39;, &#39;value&#39; =&gt; &#39;active&#39;],</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">        [&#39;field&#39; =&gt; &#39;role.name&#39;, &#39;op&#39; =&gt; &#39;in&#39;, &#39;value&#39; =&gt; [&#39;admin&#39;, &#39;editor&#39;]],</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">    'AND' =&gt; [</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">        ['field' =&gt; 'status',    'op' =&gt; 'eq', 'value' =&gt; 'active'],</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">        ['field' =&gt; 'role.name', 'op' =&gt; 'in', 'value' =&gt; ['admin', 'editor']],</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">    ],</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">    &#39;sort&#39; =&gt; [[&#39;field&#39; =&gt; &#39;created&#39;, &#39;direction&#39; =&gt; &#39;desc&#39;]],</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="x">    &#39;limit&#39; =&gt; 20,</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="x">    &#39;withTotal&#39; =&gt; true,</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">    'sort' =&gt; [['field' =&gt; 'created', 'direction' =&gt; 'desc']],</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="x">    'limit' =&gt; 20,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="x">    'withTotal' =&gt; true,</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="x">]);</span>
 </span></code></pre></div>
 <p><code>role.name</code> auto-discovers the FK and emits an <code>INNER JOIN</code>.</p>
 <h3 id="async-never-blocks">Async never blocks<a class="headerlink" href="#async-never-blocks" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="x">// ❌ Don&#39;t do this in a handler</span>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="x">// ❌ Don't do this in a handler</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="x">sleep(1);</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="x">// ✅ Do this</span>

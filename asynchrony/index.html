@@ -1435,7 +1435,7 @@
 </ul>
 <h2 id="checking-your-code">Checking your code<a class="headerlink" href="#checking-your-code" title="Permanent link">&para;</a></h2>
 <p>To find blocking calls, grep for the usual suspects:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>grep<span class="w"> </span>-rn<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;\b(sleep|usleep|fread|fgets|file_get_contents|file_put_contents|fopen|fclose|curl_exec|socket_(read|write))\b&#39;</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">&#39;*.php&#39;</span><span class="w"> </span>src/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>grep<span class="w"> </span>-rn<span class="w"> </span>-E<span class="w"> </span><span class="s1">'\b(sleep|usleep|fread|fgets|file_get_contents|file_put_contents|fopen|fclose|curl_exec|socket_(read|write))\b'</span><span class="w"> </span>--include<span class="o">=</span><span class="s1">'*.php'</span><span class="w"> </span>src/
 </span></code></pre></div>
 <p>Whitelist legitimate cases (CLI bootstrap before the loop runs, etc.).</p>
 <h2 id="fiber-vs-main">Fiber vs <code>{main}</code><a class="headerlink" href="#fiber-vs-main" title="Permanent link">&para;</a></h2>
